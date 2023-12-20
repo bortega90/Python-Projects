@@ -13,32 +13,16 @@ with conn:
     cur.execute("CREATE TABLE IF NOT EXISTS tbl_list( \
                 ID INTEGER PRIMARY KEY AUTOINCREMENT, \
                 col_fList STRING \
-                )")
-    conn.commit()
-
-
-
-with conn:
-    def list_entry():
-        for file in fileList:
+                )")  
+    #inputting data in fileList to table 'tbl_list'
+    for file in fileList:
+        if file.endswith('txt'):
             #adding fileList into table
-            cur.execute("INSERT fileList INTO tbl_list() VALUES(?)", (file))
-        conn.commit()
-
-
-list_entry() #call function
-
-
-     
-conn = sqlite3.connect('py_test.db')
-
-
-with conn:
-    cur = conn. cursor()
-    cur.execute("SELECT * FROM tbl_list = 'txt'")
-    varFile = cur.fetchall()
-    for file in varFile:
-        print(file)
-
+            cur.execute("INSERT INTO tbl_list(col_fList) VALUES(?)", (file,)) 
+            print(file)
+    conn.commit()
 conn.close()
+
+
+
     
