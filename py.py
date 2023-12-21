@@ -8,6 +8,7 @@ class Cats(housePets):
     name = 'Needles'
     diet = 'fish'
     lifestyle = 'couch potato'
+    mood = 'apathetic'
     #override eat() method
     def eat(self):
         print('Cats enjoy eating {}.'.format(self.diet))
@@ -19,8 +20,8 @@ class Dogs(housePets):
     age = 2
     
 
-    def sleep(self):
-        print('Dogs are {}.'.format(self.sleep_cycle))
+    def eat(self):
+        print('Dogs eat all kinds of {}.'.format(self.diet))
         
 
 #create object of the subclass
@@ -28,6 +29,6 @@ if __name__ == '__main__':
     kitty = Cats()
     doggy = Dogs()
     
-    doggy.sleep()
+    doggy.eat()
     kitty.eat()
 
