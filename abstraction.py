@@ -10,7 +10,7 @@ class house(ABC):
 
 #pass b/c we are inputting amount when we call the function
     def cost(self, amount):
-        pass
+        print('The house costs {}'.format(amount))
 
 class mortage(house):
     #this will give us the montly amount... i wanted to input more variables
@@ -21,5 +21,6 @@ class mortage(house):
 
 
 obj = mortage()
+obj.cost("260,000")
 obj.downPayment("20,000")
 obj.payment("611.11")
