@@ -20,10 +20,10 @@ class ParentWindow(Frame):
         self.sourceDir_btn.grid(row=0,column=0, padx=(20,10), pady=(30,0))
 
         #create entry for source directory selection
-        self.source_dir = Entry(width=75)
+        self.sourceDir = Entry(width=75)
         #positions entry in GUI using tkinter grid() padx and pady are the same as
         #the button to ensure they will line up
-        self.source_dir.grid(row=0,column=1, columnspan=2, padx=(20,10),pady=(30,0))
+        self.sourceDir.grid(row=0,column=1, columnspan=2, padx=(20,10),pady=(30,0))
         
         #creates button to select destination of files from destination directory
         self.destDir_btn = Button(text="Select Destination", width =20)
@@ -76,7 +76,7 @@ class ParentWindow(Frame):
         
     def transferFiles(self):
         #gets source directory
-        source=self.source_dir.get()
+        source=self.sourceDir.get()
         #gets destination directory
         destination = self.destination_dir.get()
         #gets a list of files in the source directory
