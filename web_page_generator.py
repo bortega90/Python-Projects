@@ -26,10 +26,13 @@ class ParentWindow(Frame):
         
 
         #create Entry for Default HTML page button
+        self.lbl_text = tk.Label(self.master,text="Enter Custom text: ")
+        self.lbl_text.grid(row=0, column=1, padx=(10,40),pady=(0,15))
         self.submitWords = Entry(width=75)
         #positions entry in GUI using tkinter grid() padx and pady are the same as
         #the button to ensure they will line up
         self.submitWords.grid(row=1,column=1, columnspan=2, padx=(20,10),pady=(30,10))
+       
 
 
 
@@ -46,12 +49,19 @@ class ParentWindow(Frame):
         submitWords = ""
         htmlFile = open('index.html','w')
         submitContent = '<html>\n<body>\n<h1>' + submitWords + '</h1>\n</body>\n</html>'
+        submitWords.config(text=submitWords.get(), font=('Helvetica 13'))
         htmlFile.write(submitContent)
         htmlFile.close()
         webbrowser.open_new_tab('index.html')
+        
+
+        
+       
+     
 
 
 
+       
 
 
 
