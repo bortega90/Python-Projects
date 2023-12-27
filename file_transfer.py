@@ -2,10 +2,12 @@ import tkinter as tk
 from tkinter import *
 import tkinter.filedialog
 import os
+import os.path as path
 import stat
 import time
 import shutil
 import datetime
+from datetime import datetime
 from datetime import timedelta
 
 class ParentWindow(Frame):
@@ -62,7 +64,7 @@ class ParentWindow(Frame):
         self.sourceDir_btn = Button(text="Select Source", width=20, command=self.sourceDir)
   
 
-        
+        #creates function to select destination
     def destDir(self):
         selectDestDir=tkinter.filedialog.askdirectory()
         #the .delete (0,END) will clear the content inserted in the Entry widget, this allows
@@ -73,7 +75,7 @@ class ParentWindow(Frame):
         #create button to select destination of files from destination directory
         self.destDir_btn = Button(text="Select Destination", width=20, command=self.destDir)
 
-        
+        #creates function to move files 
     def transferFiles(self):
         #gets source directory
         source=self.sourceDir.get()
@@ -83,15 +85,22 @@ class ParentWindow(Frame):
         source_files = os.listdir(source)
         #runs thru each file in the source directory
         for i in source_files:
+            #this iterates thru the source directory?
+            file_path = os.path.join(source,i)
+            #this will subtract now time from mod time
+            twentyfourHrs_ago = datetime.datetime.now() - timedelta(hours = 24)
+            mod_time = os.pathgetmtime(file_path)
+            if mod_time < twentyfourHrs_ago:
             #moves each file from source to the destination
-            shutil.move(source + '/' + i, destination)
-            print(i + ' was successfully transferred.')
-     
+                shutil.move(source + '/' + i, destination)
+                print(i + ' was successfully transferred.')
 
     def exit_program(self):
         #root is the main GUI window, the Tkinter destroy method tells python to terminate
         #root.mainloop and all widgets insid GUI window
         root.destroy()
+
+
 
 #get the file path
 filepath = r"C:\Users\britn\OneDrive\Desktop\Customer Destination\Nu_txt_doc1.txt"
@@ -101,6 +110,7 @@ last_access_time=os.path.getmtime(filepath)
 fileTime=time.strftime('%Y-%m-%d/%H:%M:%S', time.localtime(last_access_time))
 print('{} last modified time on: {}'.format(filepath, fileTime))
 
+    
 
 filepath = r"C:\Users\britn\OneDrive\Desktop\Customer Destination\Nu_txt_doc2.txt"
 last_access_time=os.path.getmtime(filepath)
@@ -112,6 +122,8 @@ filepath = r"C:\Users\britn\OneDrive\Desktop\Customer Destination\Nu_txt_doc3.tx
 last_access_time=os.path.getmtime(filepath)
 fileTime=time.strftime('%Y-%m-%d/%H:%M:%S', time.localtime(last_access_time))
 print('{} last modified time on: {}'.format(filepath, fileTime))
+
+
 
 
 
