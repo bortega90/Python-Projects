@@ -47,34 +47,13 @@ class ParentWindow(Frame):
     #adding function to the Submit Custom Text button
     def submitText(self):
         submitWords = ""
+        customText = self.submitWords.get()
         htmlFile = open('index.html','w')
-        submitContent = '<html>\n<body>\n<h1>' + submitWords + '</h1>\n</body>\n</html>'
-        submitWords.config(text=submitWords.get(), font=('Helvetica 13'))
+        submitContent = '<html>\n<body>\n<h1>' + customText + '</h1>\n</body>\n</html>'
         htmlFile.write(submitContent)
         htmlFile.close()
         webbrowser.open_new_tab('index.html')
-        
-
-        
-       
-     
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 if __name__ == "__main__":
     root = tk.Tk()
