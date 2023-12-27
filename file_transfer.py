@@ -88,7 +88,7 @@ class ParentWindow(Frame):
             mod_time = os.path.getmtime(file_path)
             #linking filepath with time stamp
             date_time_file = datetime.datetime.fromtimestamp(mod_time)
-            if date_time_file < twentyfourHrs_ago:
+            if date_time_file > twentyfourHrs_ago:
             #moves each file from source to the destination
                 shutil.move(source + '/' + i, destination)
                 print(i + ' was successfully transferred.')
