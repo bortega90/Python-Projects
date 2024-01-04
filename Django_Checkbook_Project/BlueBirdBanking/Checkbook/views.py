@@ -20,7 +20,7 @@ def create_account(request):
             return render(request, 'checkbook/CreateNewAccount.html') # returns back to homepage
     content = {'form':form} # saves content to the template as a dictionary
     # adds content fo form to page
-    return render(request, 'checkbook/CreateNewAccount.html', content)
+    return redirect('index') # returns back to homepage
 
 def balance(request, pk):
     account = get_object_or_404(Account, pk=pk) # retrieve requested account using Primary Key
