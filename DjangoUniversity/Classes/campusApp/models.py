@@ -17,4 +17,5 @@ class UniversityCampus(models.Model):
     # displays University Campus
     class Meta:
         verbose_name = 'University Campus'
+        verbose_name = 'University Campus'
 
